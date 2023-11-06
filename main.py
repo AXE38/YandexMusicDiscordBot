@@ -1,4 +1,3 @@
-import asyncio
 import itertools
 import os
 import sys
@@ -11,7 +10,6 @@ import wget
 from async_timeout import timeout
 from discord.ext import commands
 from yandex_music import Client
-from youtube_dl import YoutubeDL
 import asyncio
 import yt_dlp
 from mutagen.easyid3 import EasyID3

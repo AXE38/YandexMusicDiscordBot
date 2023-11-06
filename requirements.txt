@@ -1,0 +1,6 @@
+async_timeout==3.0.1
+discord.py==2.2.2
+mutagen==1.46.0
+wget==3.2
+yandex_music==2.0.1
+yt_dlp==2023.3.4

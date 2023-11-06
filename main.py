@@ -16,6 +16,7 @@ import asyncio
 import yt_dlp
 from mutagen.easyid3 import EasyID3
 from configparser import ConfigParser
+import logging
 
 
 class Utils:
@@ -53,6 +54,13 @@ class Utils:
         audiofile = EasyID3(full_file_path)
         return {'artist': audiofile['artist'], 'title': audiofile['title']}
 
+
+sys.stderr = open('err_log.txt', 'w')
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    stream=sys.stderr
+)
 
 parser = ConfigParser()
 parser.read("config.ini")
@@ -537,7 +545,7 @@ class Music(commands.Cog):
             cnt = 1
         if cnt > 1:
             player = self.get_player(ctx)
-            for i in range(cnt-1):
+            for i in range(cnt - 1):
                 await player.queue.get()
 
         vc.stop()
@@ -635,5 +643,4 @@ async def main():
         await bot.add_cog(Music(bot))
         await bot.start(TOKEN)
 
-sys.stderr = open('err_log.txt', 'w')
 asyncio.run(main())

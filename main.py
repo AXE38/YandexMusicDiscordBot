@@ -55,15 +55,15 @@ class Utils:
         return {'artist': audiofile['artist'], 'title': audiofile['title']}
 
 
-sys.stderr = open('err_log.txt', 'w')
+parser = ConfigParser()
+parser.read("config.ini")
+
+sys.stderr = open(parser.get('main', 'log_path'), 'w')
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     stream=sys.stderr
 )
-
-parser = ConfigParser()
-parser.read("config.ini")
 
 YMClient = Client(parser.get('tokens', 'yandex_token')).init()
 

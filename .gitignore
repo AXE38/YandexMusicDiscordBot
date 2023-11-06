@@ -1,1 +1,5 @@
 /venv/
+/cache/
+/.idea/
+err_log.txt
+config.ini
